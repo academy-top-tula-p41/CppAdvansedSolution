@@ -48,7 +48,7 @@ int main()
 
     // отзеркаливание
 
-    for (int i{}; i < height; i++)
+    /*for (int i{}; i < height; i++)
     {
         for (int j{}; j < width / 2; j++)
         {
@@ -56,8 +56,35 @@ int main()
             matrix[i][j] = matrix[i][width - 1 - j];
             matrix[i][width - 1 - j] = temp;
         }
-    }
+    }*/
+
     
+    int steps{ 3 };
+    steps %= width;
+
+    // сдвиг влево
+    /*
+    for (int s{}; s < steps; s++)
+    {
+        for (int i{}; i < height; i++)
+        {
+            int temp{ matrix[i][0] };
+            for (int j{}; j < width - 1; j++)
+                matrix[i][j] = matrix[i][j + 1];
+            matrix[i][width - 1] = temp;
+        }
+    }*/
+    // сдвиг вправо
+    for (int s{}; s < steps; s++)
+    {
+        for (int i{}; i < height; i++)
+        {
+            int temp{ matrix[i][width - 1] };
+            for (int j{ width - 1 }; j > 0; j--)
+                matrix[i][j] = matrix[i][j - 1];
+            matrix[i][0] = temp;
+        }
+    }
 
 
     // печать
